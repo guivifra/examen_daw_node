@@ -1,18 +1,8 @@
-# Utilitza una imatge oficial de Node.js
-
-
-# Estableix el directori de treball
-
-
-# Copia els fitxers de l'aplicació
-
-
-
-# Instal·la les dependències
-
-
-# Exposa el port 3000
-
-
-# Comanda per executar l'aplicació
-
+FROM node:latest
+RUN mkdir -p /opt/app
+WORKDIR /opt/app
+COPY app/package.json app/server.js .
+RUN npm install
+COPY app/ .
+EXPOSE 3000
+CMD [ "npm", "start"]
